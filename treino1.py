@@ -28,5 +28,17 @@ class Pessoa():
 davi = Pessoa("Davi",20)
 maria = Pessoa("Maria",25)
 
-print(davi.nome , maria.nome)
-print(davi.idade , maria.idade)
+#print(davi.nome , maria.nome)
+#print(davi.idade , maria.idade)
+
+class Produto():
+    def __init__(self, nome, preco, estoque):
+        self.nome = nome
+        self.preco = preco
+        self.estoque = estoque
+        pass
+    def exibir_info(self, nome, preco, estoque):
+        print(f"Produto:{nome}\nPreço:{preco}\nEstoque:{estoque}")
+
+computador = Produto("Teclado", 100, 10) 
+computador.exibir_info()
