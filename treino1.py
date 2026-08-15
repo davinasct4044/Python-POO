@@ -35,10 +35,28 @@ class Produto():
     def __init__(self, nome, preco, estoque):
         self.nome = nome
         self.preco = preco
-        self.estoque = estoque
+        self._estoque = estoque
         pass
-    def exibir_info(self, nome, preco, estoque):
-        print(f"Produto:{nome}\nPreço:{preco}\nEstoque:{estoque}")
+    def exibir_info(self):
+        print(f"Produto: {self.nome}")
+        print(f"Preço: {self.preco}")
+        print(f"Estoque: {self._estoque}")
+    def vender(self, quantidade):
+        if self._estoque >= quantidade:
+            self._estoque -= quantidade
+            print('venda realizada')
+            print(f"restou {self._estoque}")
+        else:
+            print('venda não realizada')
+            print(f"restou {self._estoque}")
+    def adicionar_estoque(self, quantidade):
+        if self._estoque > 0:
+            self._estoque += quantidade
+            print(f'o estoque atual é: {self._estoque}')
+        else:
+            print('não foi possível mudar o valor pq')
+
 
 computador = Produto("Teclado", 100, 10) 
 computador.exibir_info()
+computador.vender(9)
