@@ -42,21 +42,31 @@ class Produto():
         print(f"Preço: {self.preco}")
         print(f"Estoque: {self._estoque}")
     def vender(self, quantidade):
-        if self._estoque >= quantidade:
+        if quantidade > 0 and quantidade <= self._estoque:
+            print('venda não realizada')
+            print(f"restou {self._estoque}")
+            
+        else:
             self._estoque -= quantidade
             print('venda realizada')
             print(f"restou {self._estoque}")
-        else:
-            print('venda não realizada')
-            print(f"restou {self._estoque}")
     def adicionar_estoque(self, quantidade):
-        if self._estoque > 0:
+        if quantidade > 0:
             self._estoque += quantidade
             print(f'o estoque atual é: {self._estoque}')
         else:
-            print('não foi possível mudar o valor pq')
+            print('não foi possível mudar o valor pq está negativo')
+    @property
+    def estoque(self):
+        return self._estoque
+
+
 
 
 computador = Produto("Teclado", 100, 10) 
 computador.exibir_info()
 computador.vender(9)
+print(computador.estoque)
+
+ 
+
