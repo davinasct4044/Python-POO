@@ -35,38 +35,44 @@ class Produto():
     def __init__(self, nome, preco, estoque):
         self.nome = nome
         self.preco = preco
-        self._estoque = estoque
+        self.estoque = estoque
         pass
     def exibir_info(self):
         print(f"Produto: {self.nome}")
         print(f"Preço: {self.preco}")
-        print(f"Estoque: {self._estoque}")
+        print(f"Estoque: {self.estoque}")
     def vender(self, quantidade):
         if quantidade > 0 and quantidade <= self._estoque:
-            print('venda não realizada')
-            print(f"restou {self._estoque}")
-            
-        else:
             self._estoque -= quantidade
             print('venda realizada')
-            print(f"restou {self._estoque}")
+            print(f"restou {self.estoque}")
+            
+        else:
+            print('venda não realizada')
+            print(f"restou {self.estoque}")
+            
     def adicionar_estoque(self, quantidade):
         if quantidade > 0:
             self._estoque += quantidade
-            print(f'o estoque atual é: {self._estoque}')
+            print(f'o estoque atual é: {self.estoque}')
         else:
             print('não foi possível mudar o valor pq está negativo')
     @property
     def estoque(self):
-        return self._estoque
+            return self._estoque
+
+    @estoque.setter
+    def estoque(self, valor):
+        if valor >= 0:
+            self._estoque = valor
+        else:
+            print('o estoque não pode ser negativo')
 
 
 
 
 computador = Produto("Teclado", 100, 10) 
-computador.exibir_info()
-computador.vender(9)
-print(computador.estoque)
+computador.adicionar_estoque(2)
 
  
 
