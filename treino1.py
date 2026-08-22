@@ -9,13 +9,10 @@ pessoa2 = pessoa1
 print(pessoa1 is pessoa2)
 """
 
-class Cachorro():
-    def __init__(self,nome):
-        self.nome = nome
-    pass
 
-dog1 = Cachorro("Rex")
-dog2 = Cachorro("Thor")
+
+#dog1 = Cachorro("Rex")
+#dog2 = Cachorro("Thor")
 
 #desafio
 
@@ -71,8 +68,45 @@ class Produto():
 
 
 
-computador = Produto("Teclado", 100, 10) 
-computador.adicionar_estoque(2)
+#computador = Produto("Teclado", 100, 10) 
+#computador.adicionar_estoque(2)
 
- 
 
+
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    def __init__(self, nome):
+        self.nome = nome
+    def comer(self):
+        print(f' {self.nome} comeu')
+    @abstractmethod
+    def falar(self):
+        pass
+
+class Cachorro(Animal):
+    def __init__(self, nome, idade):
+        super().__init__(nome)
+        self.idade = idade
+    pass
+    def falar(self):
+        print('au au')
+
+class Gato(Animal):
+    def __init__(self, nome, idade):
+        super().__init__(nome)
+        self.idade = idade
+    def miar(self):
+        print('miau')
+    def falar(self):
+        print('ai ai')
+
+""" 
+super() permite que uma classe filha utilize métodos da classe pai, especialmente o __init__, sem precisar reescrever sua lógica.
+"""
+
+animais = [Gato("fiu", 10), Cachorro("bro", 12)]
+
+for falas in animais:
+    falas.falar()
